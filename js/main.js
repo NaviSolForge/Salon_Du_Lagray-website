@@ -17,29 +17,6 @@
 })();
 
 (() => {
-  const splash = document.getElementById('splash');
-  if (!splash) return;
-
-  document.body.classList.add('splash-active');
-
-  const dismiss = () => {
-    if (splash.classList.contains('is-hidden')) return;
-    splash.classList.add('is-hidden');
-    document.body.classList.remove('splash-active');
-  };
-
-  splash.addEventListener('click', dismiss);
-  window.addEventListener('scroll', dismiss, { once: true, passive: true });
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  window.setTimeout(dismiss, reduceMotion ? 900 : 2200);
-
-  splash.addEventListener('transitionend', () => {
-    splash.style.display = 'none';
-  });
-})();
-
-(() => {
   const slides = document.querySelectorAll('.hero__slide');
   if (slides.length < 2) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
